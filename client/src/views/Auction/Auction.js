@@ -26,8 +26,8 @@ class Forms extends Component {
     };
   }
 
-  componentDidMount(){
-    localStorage.setItem("hashes",JSON.stringify([]));
+  componentDidMount() {
+    // localStorage.setItem("hashes", JSON.stringify([]));
   }
 
   toggle() {
@@ -41,19 +41,31 @@ class Forms extends Component {
   }
 
   handleAuction = (e) => {
+
     e.preventDefault();
-    // var hashes = localStorage.getItem("hashes");
-    // console.log(typeof(hashes));
-    // if(hashes == null){
-    //   hashes = [];
-    // }else{
-    //   hashes = JSON.parse(hashes);
-    // }
-    // console.log("before",hashes);
-    // hashes.push("xxxx");
-    // localStorage.setItem("hashes",JSON.stringify(hashes));
-    // console.log("after",hashes);
-    console.log(e.company);
+    
+    var itemName = document.getElementById("company");
+    var itemTime = document.getElementById("street");
+    var itemVal = document.getElementById("vat");
+    var randItem = itemName.value + itemTime.value + itemVal.value;
+    itemName.value = "";
+    itemTime.value = "";
+    itemVal.value = "";
+    console.log(randItem);
+    
+    var prevState = localStorage.getItem("hashes");
+    if (prevState == null){
+      prevState = [];
+    }else{
+      prevState = JSON.parse(prevState);
+    }
+    
+    // console.log(prevState);
+    
+    prevState.push(randItem);
+    localStorage.setItem("hashes",JSON.stringify(prevState));
+    
+    // console.log(prevState)
   }
 
   render() {
@@ -62,39 +74,38 @@ class Forms extends Component {
         <Row>
           <Col xs="12" sm="12">
             <Card>
-            <Form>
-                
-              <CardHeader>
-                <strong>Auction</strong>
-                <small> Form</small>
-              </CardHeader>
-              <CardBody>
-                <FormGroup>
-                  <Label htmlFor="company">Item Description</Label>
-                  <Input
-                    type="text"
-                    id="company"
-                    placeholder="Enter your item name"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="vat">Max Amount</Label>
-                  <Input type="text" id="vat" placeholder="Enter max amount for auction" />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="street">Time</Label>
-                  <Input
-                    type="text"
-                    id="street"
-                    placeholder="Enter time for auction"
-                  />
-                </FormGroup>
-              </CardBody>
-              <CardFooter>
-                <Button outline type="submit" size="sm" color="primary" onClick = {this.handleAuction}>
-                  <i className="fa fa-dot-circle-o" /> Submit
+              <Form>
+                <CardHeader>
+                  <strong>Auction</strong>
+                  <small> Form</small>
+                </CardHeader>
+                <CardBody>
+                  <FormGroup>
+                    <Label htmlFor="company">Item Description</Label>
+                    <Input
+                      type="text"
+                      id="company"
+                      placeholder="Enter your item name"
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label htmlFor="vat">Max Amount</Label>
+                    <Input type="text" id="vat" placeholder="Enter max amount for auction" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label htmlFor="street">Time</Label>
+                    <Input
+                      type="text"
+                      id="street"
+                      placeholder="Enter time for auction"
+                    />
+                  </FormGroup>
+                </CardBody>
+                <CardFooter>
+                  <Button outline type="submit" size="sm" color="primary" onClick={this.handleAuction}>
+                    <i className="fa fa-dot-circle-o" /> Submit
                 </Button>
-              </CardFooter>
+                </CardFooter>
               </Form>
             </Card>
           </Col>
