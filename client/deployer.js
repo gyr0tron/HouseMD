@@ -1,29 +1,25 @@
-//const Preferences = require("preferences");
+
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
-const compiled = require('./build/Dispute.json');
+const { interface, bytecode } = require('./compile');
 const provider = new HDWalletProvider(
     //Mnemonic
-    "chair inch unusual slam lava present office position address easy valley junior",
+    "ranch hospital false mirror despair expose enable control consider security cute defy",
     //Infura Rinkeby API Key
-    'https://ropsten.infura.io/v3/22be87df8e694b33a0c0b7acf4d67e9d'
+    'https://rinkeby.infura.io/v3/403f8a0c54b04ed399a02ef50e43469a'
 );
 
 const web3 = new Web3(provider);
-
-const deploy = (async() => {
-    //Get a list of all accounts
+const deploy = async () => {
     const accounts = await web3.eth.getAccounts();
-    //console.log(accounts[0])
-    //console.log(bytecode)
-    const bytecode = compiled.bytecode;
-    const interface = compiled.interface;
+    console.log('Attempting to deploy from account', accounts[0]);
 
-    var result = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [] }).send({ from: accounts[0], gas: '4700000' });
+    const result = await new web3.eth.Contract(JSON.parse(interface))
+        .deploy({ data: bytecode })
+        .send({ gas: '4700000', from: accounts[0] });
 
-    console.log("Contract deployed at ", result.options.address);
-    console.log("ABI: ",result.options.jsonInterface);
-    // var prefs = new Preferences('cryptodoc');
-    // prefs.address = result.options.address;
-    // prefs.abi = JSON.stringify(result.options.jsonInterface);
-})();
+    console.log('Contract deployed to', result.options.address);
+    console.log("-------------------");
+    console.log("ABI: ", result.options.jsonInterface);
+};
+deploy();
