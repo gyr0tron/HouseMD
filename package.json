@@ -1,16 +1,24 @@
 {
-  "name": "server",
+  "name": "upload-file-via-browser",
   "version": "1.0.0",
+  "description": "Upload file to IPFS via browser using js-ipfs-http-client with Webpack",
   "scripts": {
-    "client": "cd client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "start": "node server.js"
   },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
-  },
+  "author": "Harlan T Wood <code@harlantwood.net>",
+  "contributors": [
+    "Victor Bjelkholm <victor@ipfs.io>"
+  ],
+  "license": "MIT",
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "babel-core": "~6.26.3",
+    "babel-loader": "~8.0.4",
+    "ipfs-http-client": "../../",
+    "pull-file-reader": "~1.0.2",
+    "react": "~16.6.3",
+    "react-dom": "~16.6.3",
+    "react-hot-loader": "~4.3.12",
+    "webpack": "~4.25.1",
+    "webpack-dev-server": "~3.1.10"
   }
 }
