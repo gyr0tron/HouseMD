@@ -6,8 +6,6 @@ import './App.scss';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-
-
 // Containers
 const DefaultLayout = Loadable({
   loader: () => import('./containers/DefaultLayout'),
@@ -38,23 +36,21 @@ const Page500 = Loadable({
 class App extends Component {
 
   state = {
-    response: '',
-    post: '',
-    responseToPost: '',
+
   };
 
   componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
+    // this.callApi()
+    //   .then(res => this.setState({ response: res.express }))
+    //   .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const response = await fetch('/');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
+  // callApi = async () => {
+  //   const response = await fetch('/');
+  //   const body = await response.json();
+  //   if (response.status !== 200) throw Error(body.message);
+  //   return body;
+  // };
 
   render() {
     return (
