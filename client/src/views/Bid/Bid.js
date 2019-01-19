@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  Badge,
   Button,
   Card,
   CardBody,
@@ -14,6 +13,7 @@ import {
 } from "reactstrap";
 
 class Tables extends Component {
+
   render() {
     return (
       <div className="animated fadeIn">
