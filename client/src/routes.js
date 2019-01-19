@@ -1,6 +1,8 @@
 import React from 'react';
 import DefaultLayout from './containers/DefaultLayout';
 
+const Auction = React.lazy(() => import('./views/Auction/Auction'));
+const Bid = React.lazy(() => import('./views/Bid/Bid'));
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
 const Cards = React.lazy(() => import('./views/Base/Cards'));
 const Carousels = React.lazy(() => import('./views/Base/Carousels'));
@@ -39,6 +41,8 @@ const User = React.lazy(() => import('./views/Users/User'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
+  { path: '/auction', name: 'Auction', component: Auction},
+  { path: '/bid', name: 'Bid', component: Bid},
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },

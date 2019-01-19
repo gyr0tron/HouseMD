@@ -10,6 +10,17 @@ export default {
       },
     },
     {
+      name: 'Auction',
+      url: '/auction',
+      icon: 'icon-basket',
+    },
+    {
+      name: 'Bid',
+      url: '/bid',
+      icon: 'icon-hourglass',
+
+    },
+    {
       title: true,
       name: 'Theme',
       wrapper: {            // optional wrapper object
@@ -255,26 +266,26 @@ export default {
         },
       ],
     },
-    {
-      name: 'Disabled',
-      url: '/dashboard',
-      icon: 'icon-ban',
-      attributes: { disabled: true },
-    },
-    {
-      name: 'Download CoreUI',
-      url: 'https://coreui.io/react/',
-      icon: 'icon-cloud-download',
-      class: 'mt-auto',
-      variant: 'success',
-      attributes: { target: '_blank', rel: "noopener" },
-    },
-    {
-      name: 'Try CoreUI PRO',
-      url: 'https://coreui.io/pro/react/',
-      icon: 'icon-layers',
-      variant: 'danger',
-      attributes: { target: '_blank', rel: "noopener" },
-    },
+    // {
+    //   name: 'Disabled',
+    //   url: '/dashboard',
+    //   icon: 'icon-ban',
+    //   attributes: { disabled: true },
+    // },
+    // {
+    //   name: 'Download CoreUI',
+    //   url: 'https://coreui.io/react/',
+    //   icon: 'icon-cloud-download',
+    //   class: 'mt-auto',
+    //   variant: 'success',
+    //   attributes: { target: '_blank', rel: "noopener" },
+    // },
+    // {
+    //   name: 'Try CoreUI PRO',
+    //   url: 'https://coreui.io/pro/react/',
+    //   icon: 'icon-layers',
+    //   variant: 'danger',
+    //   attributes: { target: '_blank', rel: "noopener" },
+    // },
   ],
 };
