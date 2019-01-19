@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import {
-  Badge,
+  Form,
   Button,
-  ButtonDropdown,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Col,
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Fade,
-  Form,
   FormGroup,
-  FormText,
-  FormFeedback,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
   Label,
   Row
 } from "reactstrap";
@@ -28,7 +16,7 @@ import {
 class Forms extends Component {
   constructor(props) {
     super(props);
-
+    this.hash = "";
     this.toggle = this.toggle.bind(this);
     this.toggleFade = this.toggleFade.bind(this);
     this.state = {
@@ -36,6 +24,10 @@ class Forms extends Component {
       fadeIn: true,
       timeout: 300
     };
+  }
+
+  componentDidMount(){
+    localStorage.setItem("hashes",JSON.stringify([]));
   }
 
   toggle() {
@@ -48,12 +40,30 @@ class Forms extends Component {
     });
   }
 
+  handleAuction = (e) => {
+    e.preventDefault();
+    // var hashes = localStorage.getItem("hashes");
+    // console.log(typeof(hashes));
+    // if(hashes == null){
+    //   hashes = [];
+    // }else{
+    //   hashes = JSON.parse(hashes);
+    // }
+    // console.log("before",hashes);
+    // hashes.push("xxxx");
+    // localStorage.setItem("hashes",JSON.stringify(hashes));
+    // console.log("after",hashes);
+    console.log(e.company);
+  }
+
   render() {
     return (
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="12">
             <Card>
+            <Form>
+                
               <CardHeader>
                 <strong>Auction</strong>
                 <small> Form</small>
@@ -81,10 +91,11 @@ class Forms extends Component {
                 </FormGroup>
               </CardBody>
               <CardFooter>
-                <Button outline type="submit" size="sm" color="primary">
+                <Button outline type="submit" size="sm" color="primary" onClick = {this.handleAuction}>
                   <i className="fa fa-dot-circle-o" /> Submit
                 </Button>
               </CardFooter>
+              </Form>
             </Card>
           </Col>
         </Row>
