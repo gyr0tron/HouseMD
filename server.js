@@ -1,12 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const port = process.env.PORT || 5000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+'use strict'
+let webpack = require('webpack')
+let WebpackDevServer = require('webpack-dev-server')
+let config = require('./webpack.config')
 
-app.get('/', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(3000, 'localhost', function (err) {
+  if (err) throw new Error(err)
+  console.log('Listening at localhost:3000')
+})
