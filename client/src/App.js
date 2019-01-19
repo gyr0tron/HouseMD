@@ -100,8 +100,15 @@ class App extends Component {
     } else {
         console.log('web3 is not found')
     }
+    const accounts = await web3.eth.getAccounts()
     if (this.state.isMetaMask) {
-      contract = new web3.eth.Contract(abi, '0x3d3701b458828af7202b4a0bbe77debac64574cd');
+      contract = new web3.eth.Contract(abi, '0x76f06c81f578858a31a93ee68acb4921bf79e6c2');
+      // contract.methods.paybills('0x84465fCe8896C45594673b122F91C747E0D537CA',200000000000000).send(
+      //   { 
+      //     from: accounts[0],
+      //     gas: '1000000'
+      //   }
+      // )
     }
 
   }
