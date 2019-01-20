@@ -89,7 +89,7 @@ async function deploy(maxVal){
     // var prefs = new Preferences('cryptodoc');
     // prefs.address = result.options.address;
     // prefs.abi = JSON.stringify(result.options.jsonInterface);
-    return result.options.address;
+    return result;
 };
 
 module.exports = deploy; 

@@ -4,6 +4,7 @@ contract House {
     
     address manager;
     mapping (address => address) owner;
+    string[] public documents;
     
     modifier onlyManager() {
         require(msg.sender == manager);
@@ -22,6 +23,14 @@ contract House {
     function paybills(address payable receiver,uint amount) public{
         require(address(this).balance >= amount);
         receiver.transfer(amount);
+    }
+
+    function addHash(string _hash) onlyManager public {
+        documents.push(_hash);
+    }
+
+    function retrieveHash() onlyManager public {
+        documents[0];
     }
     
     
