@@ -76,17 +76,20 @@ interface = [
 		"type": "function"
 	}
 ]
-const deploy = (async() => {
+async function deploy(maxVal){
     //Get a list of all accounts
     const accounts = await web3.eth.getAccounts();
     //console.log(accounts[0])
     //console.log(bytecode)
-
-    var result = await new web3.eth.Contract(interface).deploy({ data: bytecode, arguments: [100000] }).send({ from: accounts[0], gas: '4700000' });
+    var value = parseInt(maxVal,10)
+    var result = await new web3.eth.Contract(interface).deploy({ data: bytecode, arguments: [value] }).send({ from: accounts[0], gas: '4700000' });
     //console.log(result)
     console.log("Contract deployed at ", result.options.address);
     //console.log("ABI: ",result.options.jsonInterface);
     // var prefs = new Preferences('cryptodoc');
     // prefs.address = result.options.address;
     // prefs.abi = JSON.stringify(result.options.jsonInterface);
-})();
+    return result.options.address;
+};
+
+module.exports = deploy; 
