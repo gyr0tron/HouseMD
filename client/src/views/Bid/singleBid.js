@@ -14,8 +14,8 @@ class SingleBid extends Component {
                 <td>{this.props.val}</td>
                 <td>
                     <Col col="12" sm="12" md="12" xl className="mb-0 mb-xl-0">
-                        <Button block outline color="primary">
-                            Bid
+                        <Button block outline color="primary" onClick = {() => this.props.closeBidding(this.props.val)}>
+                            Close
                 </Button>
                     </Col>
                 </td>

@@ -3,7 +3,7 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const provider = new HDWalletProvider(
     //Mnemonic
-    "ranch hospital false mirror despair expose enable control consider security cute defy",
+    "chair inch unusual slam lava present office position address easy valley junior",
     //Infura Rinkeby API Key
     'https://rinkeby.infura.io/v3/22be87df8e694b33a0c0b7acf4d67e9d'
 );

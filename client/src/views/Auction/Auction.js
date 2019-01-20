@@ -12,6 +12,7 @@ import {
   Label,
   Row
 } from "reactstrap";
+import {deploy} from '../../deployer';
 
 class Forms extends Component {
   constructor(props) {
@@ -27,8 +28,15 @@ class Forms extends Component {
   }
 
   componentDidMount() {
-    // localStorage.setItem("hashes", JSON.stringify([]));
+
+    localStorage.setItem("name", JSON.stringify([]));
+    localStorage.setItem("time", JSON.stringify([]));
+    localStorage.setItem("vals", JSON.stringify([]));
+    // console.log("from Auction");
+    // console.log(this.props.contract);
   }
+
+
 
   toggle() {
     this.setState({ collapse: !this.state.collapse });
@@ -43,30 +51,51 @@ class Forms extends Component {
   handleAuction = (e) => {
 
     e.preventDefault();
+
+    var prevVal = localStorage.getItem("vals");
+    if (prevVal == null){
+      prevVal = [];
+    }else{
+      prevVal = JSON.parse(prevVal);
+    }
     
     var itemName = document.getElementById("company");
     var itemTime = document.getElementById("street");
     var itemVal = document.getElementById("vat");
-    var randItem = itemName.value + itemTime.value + itemVal.value;
+    console.log("DEEEPPLLOY");
+    deploy(parseInt(itemVal.value))
+      .then((data) => {
+        prevVal.push(data);
+        localStorage.setItem("vals",JSON.stringify(prevVal));
+    
+      })
+    
+    var prevName = localStorage.getItem("name");
+    if (prevName == null){
+      prevName = [];
+    }else{
+      prevName = JSON.parse(prevName);
+    }
+
+    var prevTime = localStorage.getItem("time");
+    if (prevTime == null){
+      prevTime = [];
+    }else{
+      prevTime = JSON.parse(prevTime);
+    }
+
+    prevName.push(itemName.value);
+    prevTime.push(itemTime.value)
+    
+    localStorage.setItem("name", JSON.stringify(prevName));
+    localStorage.setItem("time", JSON.stringify(prevTime));
+        
     itemName.value = "";
     itemTime.value = "";
     itemVal.value = "";
-    console.log(randItem);
-    
-    var prevState = localStorage.getItem("hashes");
-    if (prevState == null){
-      prevState = [];
-    }else{
-      prevState = JSON.parse(prevState);
-    }
-    
-    // console.log(prevState);
-    
-    prevState.push(randItem);
-    localStorage.setItem("hashes",JSON.stringify(prevState));
-    
-    // console.log(prevState)
   }
+
+
 
   render() {
     return (

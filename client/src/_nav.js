@@ -21,5 +21,10 @@ export default {
       url: '/docs',
       icon: 'icon-puzzle',
     },
+    {
+      name: 'Schedule',
+      url: '/schedule',
+      icon: 'icon-hourglass',
+    }
   ],
 };

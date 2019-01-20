@@ -2,6 +2,8 @@ import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
+import { abi , address } from '../../contract.js';
+
 import {
   AppAside,
   AppBreadcrumb,
@@ -18,12 +20,47 @@ import {
 import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
+import web3 from '../../web3.js';
+
+
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
+
+  state = {
+    isMetaMask: false,
+    contract: {}
+  };
+
+  async componentDidMount(){
+    if (typeof window.web3 !== 'undefined') {
+        console.log('web3 is enabled');
+        if (web3.currentProvider.isMetaMask === true) {
+            await this.setState({isMetaMask: true});
+            console.log('MetaMask is active');
+        } else {
+            console.log('MetaMask is not available')
+        }
+    } else {
+        console.log('web3 is not found')
+    }
+    const accounts = await web3.eth.getAccounts()
+    if (this.state.isMetaMask) {
+
+      // this.state.contract = new web3.eth.Contract(abi,address);
+      await this.setState({contract: new web3.eth.Contract(abi,address)})
+      console.log(this.state.contract);
+      // contract.methods.paybills('0x84465fCe8896C45594673b122F91C747E0D537CA',200000000000000).send(
+      //   { 
+      //     from: accounts[0],
+      //     gas: '1000000'
+      //   }
+      // )
+    }
+  }
 
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
@@ -63,7 +100,7 @@ class DefaultLayout extends Component {
                         exact={route.exact}
                         name={route.name}
                         render={props => (
-                          <route.component {...props} />
+                          <route.component {...props} contract = {this.state.contract} />
                         )} />
                     ) : (null);
                   })}
