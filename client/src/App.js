@@ -3,7 +3,10 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import Loadable from 'react-loadable';
 import './App.scss';
+var Dagger = require("eth-dagger");
 
+// connect to Dagger ETH main network (network id: 1) over web socket
+var dagger = new Dagger("wss://ropsten.dagger.matic.network"); 
 
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
@@ -36,6 +39,13 @@ const Page500 = Loadable({
 });
 
 class App extends Component {
+  componentDidMount(){
+    dagger.on("latest:addr/0x9eF08D23BD291c2f2c27654bA02D05a1386cC185/tx/out", function (result) {
+      console.log("outgoing tranx: ", result);
+      let x = result.value
+      console.log(x);
+    });
+  }
 
   state = {
     isMetaMask: false

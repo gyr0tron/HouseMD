@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "eth-dagger": "0.0.4",
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
     "ipfs-api": "^26.1.2",
