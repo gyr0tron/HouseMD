@@ -16,9 +16,6 @@ import web3 from '../../web3.js';
 
 let accounts;
 class Tables extends Component {
-  constructor(props){
-    super(props);
-  };
 
   async componentDidMount(){
     accounts = await web3.eth.getAccounts();

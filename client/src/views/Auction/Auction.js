@@ -17,6 +17,7 @@ import {deploy} from '../../deployer';
 class Forms extends Component {
   constructor(props) {
     super(props);
+    this.auction = false;
     this.hash = "";
     this.toggle = this.toggle.bind(this);
     this.toggleFade = this.toggleFade.bind(this);
@@ -28,7 +29,7 @@ class Forms extends Component {
   }
 
   componentDidMount() {
-
+// TO RESET LOCAL STORAGE -
     // localStorage.setItem("name", JSON.stringify([]));
     // localStorage.setItem("time", JSON.stringify([]));
     // localStorage.setItem("vals", JSON.stringify([]));
@@ -51,7 +52,7 @@ class Forms extends Component {
   handleAuction = (e) => {
 
     e.preventDefault();
-
+    this.setState({auction: true});
     var prevVal = localStorage.getItem("vals");
     if (prevVal == null){
       prevVal = [];
@@ -67,7 +68,9 @@ class Forms extends Component {
       .then((data) => {
         prevVal.push(data);
         localStorage.setItem("vals",JSON.stringify(prevVal));
-        window.location.href = '/#/bid';
+        window.location.href = "/#/bid";
+        this.setState({auction: false});
+    
       })
     
     var prevName = localStorage.getItem("name");
@@ -98,8 +101,20 @@ class Forms extends Component {
 
 
   render() {
+
+    var loader = null;
+    if(this.state.auction){
+      loader = 
+      <div className="auctionLoader">
+        <img src="https://media.giphy.com/media/MVgBbtMBGQTi6og4mF/giphy.gif" />
+      </div>
+      ;
+    }
+
+
     return (
-      <div className="animated fadeIn">
+      <React.Fragment>
+      <div className="animated fadeIn auctionContent">
         <Row>
           <Col xs="12" sm="12">
             <Card>
@@ -138,8 +153,11 @@ class Forms extends Component {
               </Form>
             </Card>
           </Col>
-        </Row>
+        </Row>                                                                                                                                                                                                                                                                                                                                                                                                                                       
       </div>
+      {loader}
+      </React.Fragment>
+
     );
   }
 }
