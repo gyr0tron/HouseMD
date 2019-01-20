@@ -119,7 +119,7 @@ class Forms extends Component {
           <Col xs="12" lg="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify" /> Upcoming Payments
+                <i className="fa fa-money" /> Upcoming Payments
               </CardHeader>
               <CardBody>
                 <Table responsive striped>
