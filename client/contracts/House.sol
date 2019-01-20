@@ -29,8 +29,8 @@ contract House {
         documents.push(_hash);
     }
 
-    function retrieveHash() onlyManager public {
-        documents[0];
+    function retrieveHash() onlyManager public returns(string[])({
+        return documents[0];
     }
     
     
