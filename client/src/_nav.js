@@ -19,12 +19,12 @@ export default {
     {
       name:'Docs',
       url: '/docs',
-      icon: 'icon-puzzle',
+      icon: 'icon-folder',
     },
     {
       name: 'Schedule',
       url: '/schedule',
-      icon: 'icon-hourglass',
+      icon: 'icon-calendar',
     }
   ],
 };

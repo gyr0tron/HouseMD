@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import {
-  Badge,
   Button,
-  ButtonDropdown,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Col,
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Fade,
   Form,
   FormGroup,
-  FormText,
-  FormFeedback,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
   Label,
   Row,
   Pagination,
@@ -28,7 +16,7 @@ import {
   PaginationLink,
   Table
 } from 'reactstrap';
-import {payBill} from '../../deployer';
+import { payBill } from '../../deployer';
 
 class Forms extends Component {
   constructor(props) {
@@ -48,7 +36,7 @@ class Forms extends Component {
   }
 
   toggleFade() {
-    this.setState((prevState) => { return { fadeIn: !prevState }});
+    this.setState((prevState) => { return { fadeIn: !prevState } });
   }
 
   payBill = (e) => {
@@ -145,10 +133,16 @@ class Forms extends Component {
                   </thead>
                   <tbody>
                     <tr>
-                        <td>Electricity</td>
-                        <td>0x8d3a72a5a34c2e77f9030081fb660d938cb3ca63b34c2c82e9f259d0043b5313</td>
-                        <td>2</td>
-                        <td>12/05/2019</td>
+                      <td>Water</td>
+                      <td>0x8d3a72a5a34c2e77f9030081fb660d938cb3ca63b34c2c82e9f259d0043b5313</td>
+                      <td>2</td>
+                      <td>27/01/2019</td>
+                    </tr>
+                    <tr>
+                      <td>Maintainance</td>
+                      <td>0x8d3a72a5a34c2e77f9030081fb660d938cb3ca63b34c2c82e9f259d0043b5313</td>
+                      <td>0.34</td>
+                      <td>12/02/2019</td>
                     </tr>
                   </tbody>
                 </Table>
@@ -194,9 +188,16 @@ class Forms extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                        <td>Electricity</td>
-                        <td>0x8d3a72a5a34c2e77f90198afb660d938cb3ca63b34c2c82e9f259d0043b5313</td>
-                        <td>2</td>
+                    <tr>
+                      <td>Electricity</td>
+                      <td>0x8636a1100a06caD72C16c663F5fF6A893ddd1584</td>
+                      <td>1.2</td>
+                    </tr>
+                    <tr>
+                      <td>Property Tax</td>
+                      <td>0x445f51299Ef3307dBD75036dd896565F5B4BF7A5</td>
+                      <td>0.89</td>
+                    </tr>
                   </tbody>
                 </Table>
                 <Pagination>
