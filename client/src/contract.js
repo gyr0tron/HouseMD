@@ -1,3 +1,4 @@
+
 export const abi = [
 	{
 		"constant": false,

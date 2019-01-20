@@ -95,7 +95,6 @@ async function deploy(maxVal){
 async function payBill(addr,val){
 	const accounts = await web3.eth.getAccounts();
 	var value = parseInt(val,10);
-	console.log("XXXXX",addr,val)
 	var contract = await new web3.eth.Contract(abi,address);
 	console.log(contract);
 	// contract.methods.paybills(addr, value).send({
@@ -105,8 +104,19 @@ async function payBill(addr,val){
 
 }
 
+async function addHash(hash){
+		const accounts = await web3.eth.getAccounts();
+		var contract = await new web3.eth.Contract(abi,address);
+		contract.methods.addHash(hash).send({
+			from: accounts[0],
+			gasLimit: 1000000,
+		});
+
+}
+
 export {
 	deploy,
-	payBill
+	payBill,
+	addHash
 };
 

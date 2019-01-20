@@ -13,9 +13,9 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { addHash } from "../../deployer.js";
 const ipfsClient = require('ipfs-http-client')
-const fileReaderPullStream = require('pull-file-reader')
-
+const fileReaderPullStream = require('pull-file-reader') 
 
 class Forms extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class Forms extends Component {
       .then((response) => {
         console.log(response)
         ipfsId = response[0].hash
-        console.log(ipfsId)
+        addHash(ipfsId);
         this.setState({ added_file_hash: ipfsId })
       }).catch((err) => {
         console.error(err)
