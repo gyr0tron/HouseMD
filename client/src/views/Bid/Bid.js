@@ -56,6 +56,7 @@ class Tables extends Component {
   var bids = localStorage.getItem("vals");
   var name = localStorage.getItem("name");
   var time = localStorage.getItem("time");
+  console.log(bids);
   if(bids !== null){
     bids = JSON.parse(bids);
     time = JSON.parse(time);

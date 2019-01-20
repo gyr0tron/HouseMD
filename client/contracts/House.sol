@@ -5,13 +5,14 @@ contract House {
     address manager;
     mapping (address => address) owner;
     string[] public documents;
+    string ipfsHash;
     
     modifier onlyManager() {
         require(msg.sender == manager);
         _;
     }
     
-    constructor () public {
+    constructor () public payable {
         manager = msg.sender;
         owner[address(this)] = msg.sender;
     }
@@ -25,13 +26,14 @@ contract House {
         receiver.transfer(amount);
     }
 
-    function addHash(string _hash) onlyManager public {
+    function addHash(string memory _hash) onlyManager public {
         documents.push(_hash);
     }
 
-    function retrieveHash() onlyManager public returns(string[])({
-        return documents[0];
+    function retrieveHash() onlyManager public {
+         ipfsHash = documents[0];
     }
     
     
 }
+

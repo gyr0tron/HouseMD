@@ -29,9 +29,9 @@ class Forms extends Component {
 
   componentDidMount() {
 
-    localStorage.setItem("name", JSON.stringify([]));
-    localStorage.setItem("time", JSON.stringify([]));
-    localStorage.setItem("vals", JSON.stringify([]));
+    // localStorage.setItem("name", JSON.stringify([]));
+    // localStorage.setItem("time", JSON.stringify([]));
+    // localStorage.setItem("vals", JSON.stringify([]));
     // console.log("from Auction");
     // console.log(this.props.contract);
   }
@@ -67,7 +67,7 @@ class Forms extends Component {
       .then((data) => {
         prevVal.push(data);
         localStorage.setItem("vals",JSON.stringify(prevVal));
-    
+        window.location.href = '/#/bid';
       })
     
     var prevName = localStorage.getItem("name");
